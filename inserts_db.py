@@ -69,10 +69,10 @@ def students_courses(num_students,num_courses):
     pairs = set()
     student_count = {i : 0 for i in range(1,num_students+1)}
 
-    while len(student_in_course)<num_students*7:
+    while len(student_in_course)<num_students*6:
         students = random.randint(1,num_students)
         courses = random.randint(1,num_courses)
-        if student_count[students]<11 and (students,courses) not in pairs:
+        if student_count[students]<9 and (students,courses) not in pairs:
             student_in_course.append((students,courses))
             pairs.add((students,courses))
             student_count[students]+=1
@@ -91,6 +91,6 @@ def students_courses(num_students,num_courses):
 
 
 create_instructors(15)
-create_students(400)
+create_students(200)
 create_courses(25,15)
-students_courses(400,25)
+students_courses(200,25)

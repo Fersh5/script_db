@@ -4,7 +4,7 @@ Este script sirve para insertar valores a todas la tablas del curso de bases de 
 
 * De momento genera espesificamente:
 * 15 instructores
-* 400 estudiantes
+* 200 estudiantes
 * 25 cursos
 * Asignacion de cada estudiante maximo a 9 cursos
 
