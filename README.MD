@@ -19,4 +19,4 @@ pip3 install -r requirements.txt
 ```
 python inserts_db.py > insert.txt
 ```
->Asi la salida se guardará en insert.txt y lo podras copiar mas facilmente. 🤓🤓🤓
+>Asi la salida se guardará en *'insert.txt'* y lo podras copiar mas facilmente. 🤓🤓🤓
