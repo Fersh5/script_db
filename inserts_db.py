@@ -4,30 +4,32 @@ from faker import Faker
 # Creaciond del objeto
 fake = Faker()
 
+print('BEGIN TRANSACTION INSERT_DATA\n')
+
 def create_students(num):
     sentence_insert = f"INSERT INTO STUDENTS (FIRSTNAME,LASTNAME,AGE,EMAIL)\nVALUES"
     students = [(fake.first_name(), fake.last_name(), random.randint(17,35), fake.email()) for _ in range(num)]
-    print('BEGIN TRANSACTION INSERT_STUDENTS\n')
+
     print(sentence_insert)
     for student in students:
         if student == students[-1]:
             print(f'{student};\n')
         else:
             print(f'{student},')
-    print('COMMIT TRANSACTION\n')
+    print('SAVE TRANSACTION INSERT_DATA\n')
 
 def create_instructors(num):
     sentence_insert = f"INSERT INTO INSTRUCTORS (FIRSTNAME,LASTNAME,EMAIL,SALARY)\nVALUES"
     instructors = [(fake.first_name(), fake.last_name(), fake.email(), 
                     random.choice([12000,15000,28000,45000])) for _ in range(num)]
-    print('BEGIN TRANSACTION INSERT_INSTRUCTORS\n')
+    
     print(sentence_insert)
     for instructor in instructors:
         if instructor == instructors[-1]:
             print(f'{instructor};\n')
         else:
             print(f'{instructor},')
-    print('COMMIT TRANSACTION\n')
+    print('SAVE TRANSACTION INSERT_DATA\n')
 
 def create_courses (num, num_instructor):
     # curse_name, description, instructor_ID, duration_hours
@@ -52,14 +54,14 @@ def create_courses (num, num_instructor):
                   'Informatica Empresarial']
     courses = [(name_courses.pop(random.randint(0,len(name_courses)-1)), fake.text(), 
                 random.randint(1,num_instructor), random.randint(50,90))for _ in range(num)] 
-    print('BEGIN TRANSACTION INSERT_COURSES\n')
+    
     print(sentence_insert)
     for course in courses:
         if course == courses[-1]:
             print(f'{course};\n')
         else:
             print(f'{course},')
-    print('COMMIT TRANSACTION\n')
+    print('SAVE TRANSACTION INSERT_DATA\n')
     namecurso_idinstructor = [(courses[0],courses[2]) for course in courses]
     return namecurso_idinstructor    
 
@@ -79,7 +81,6 @@ def students_courses(num_students,num_courses):
     
     slices = [student_in_course[i:i+999] for i in range(0,len(student_in_course),999)]
     
-    print('BEGIN TRANSACTION INSERT_STUDENTS_IN_COURSES\n')
     for sentence in slices:
         print(sentence_insert)
         for pair in sentence:
@@ -87,10 +88,12 @@ def students_courses(num_students,num_courses):
                 print(f'{pair};\n')
             else:
                 print(f'{pair},')
-    print('COMMIT TRANSACTION\n')
+    print('SAVE TRANSACTION INSERT_DATA\n')
 
 
 create_instructors(15)
 create_students(200)
 create_courses(25,15)
 students_courses(200,25)
+
+print('COMMIT TRANSACTION\n')
