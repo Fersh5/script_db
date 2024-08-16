@@ -10,7 +10,7 @@ def create_students(num):
     print(sentence_insert)
     for student in students:
         if student == students[-1]:
-            print(f'{student}')
+            print(f'{student};\n')
         else:
             print(f'{student},')
 
@@ -21,7 +21,7 @@ def create_instructors(num):
     print(sentence_insert)
     for instructor in instructors:
         if instructor == instructors[-1]:
-            print(f'{instructor}')
+            print(f'{instructor};\n')
         else:
             print(f'{instructor},')
 
@@ -51,7 +51,7 @@ def create_courses (num, num_instructor):
     print(sentence_insert)
     for course in courses:
         if course == courses[-1]:
-            print(f'{course}')
+            print(f'{course};\n')
         else:
             print(f'{course},')
     namecurso_idinstructor = [(courses[0],courses[2]) for course in courses]
@@ -73,12 +73,11 @@ def students_courses(num_students,num_courses):
     
     for pair in student_in_course:
         if pair == student_in_course[-1]:
-            print(f'{pair}')
+            print(f'{pair};\n')
         else:
             print(f'{pair},')
 
-# create_instructors(15)
-# create_students(400)
-#create_courses(25,15)
-
-students_courses(100,10)
+create_instructors(15)
+create_students(400)
+create_courses(25,15)
+students_courses(400,25)
