@@ -71,12 +71,15 @@ def students_courses(num_students,num_courses):
             pairs.add((students,courses))
             student_count[students]+=1
     
-    print(sentence_insert)
-    for pair in student_in_course:
-        if pair == student_in_course[-1]:
-            print(f'{pair};\n')
-        else:
-            print(f'{pair},')
+    slices = [student_in_course[i:i+999] for i in range(0,len(student_in_course),999)]
+    
+    for sentence in slices:
+        print(sentence_insert)
+        for pair in sentence:
+            if pair == sentence[-1]:
+                print(f'{pair};\n')
+            else:
+                print(f'{pair},')
 
 create_instructors(15)
 create_students(400)
