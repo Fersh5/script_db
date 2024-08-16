@@ -4,6 +4,8 @@ from faker import Faker
 # Creaciond del objeto
 fake = Faker()
 
+print('BEGIN TRANSACTION INSERT_DATA\n')
+
 def create_students(num):
     sentence_insert = f"INSERT INTO STUDENTS (FIRSTNAME,LASTNAME,AGE,EMAIL)\nVALUES"
     students = [(fake.first_name(), fake.last_name(), random.randint(17,35), fake.email()) for _ in range(num)]
@@ -13,6 +15,7 @@ def create_students(num):
             print(f'{student};\n')
         else:
             print(f'{student},')
+    print('SAVE TRANSACTION INSERT_STUDENTS\n')
 
 def create_instructors(num):
     sentence_insert = f"INSERT INTO INSTRUCTORS (FIRSTNAME,LASTNAME,EMAIL,SALARY)\nVALUES"
@@ -24,6 +27,7 @@ def create_instructors(num):
             print(f'{instructor};\n')
         else:
             print(f'{instructor},')
+    print('SAVE TRANSACTION INSERT_INSTRUCTORS\n')
 
 def create_courses (num, num_instructor):
     # curse_name, description, instructor_ID, duration_hours
@@ -54,6 +58,7 @@ def create_courses (num, num_instructor):
             print(f'{course};\n')
         else:
             print(f'{course},')
+    print('SAVE TRANSACTION INSERT_COURSES\n')
     namecurso_idinstructor = [(courses[0],courses[2]) for course in courses]
     return namecurso_idinstructor    
 
@@ -80,8 +85,11 @@ def students_courses(num_students,num_courses):
                 print(f'{pair};\n')
             else:
                 print(f'{pair},')
+    print('SAVE TRANSACTION INSERT_STUDENTS_COURSES\n')
 
 create_instructors(15)
 create_students(400)
 create_courses(25,15)
 students_courses(400,25)
+
+print('COMMIT TRANSACTION')
