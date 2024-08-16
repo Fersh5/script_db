@@ -13,4 +13,10 @@ Este script sirve para insertar valores a todas la tablas del curso de bases de 
 pip3 install -r requirements.txt
 
 
-*Ejecuta el codigo, copia y pega en tu DBMS* 🤓🤓🤓
+> *Ejecuta el codigo, copia y pega en tu DBMS 
+>  recomiendo que lo ejecutes se la siguiente manera:*
+
+```
+python inserts_db.py > insert.txt
+```
+>Asi la salida se guardará en insert.txt y lo podras copiar mas facilmente. 🤓🤓🤓
